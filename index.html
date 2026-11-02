@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#140c24">
+<meta name="robots" content="noindex, nofollow">
+<title>Para mi niña, Camila 💙</title>
+<meta property="og:title" content="Para mi niña, Camila 💙">
+<meta property="og:description" content="Un rinconcito solo para vos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--noche:#140c24;--noche2:#24143a;--rosa:#f4a7c0;--rosa2:#ff7aa8;--oro:#e8c47a;--crema:#fff6ee;--texto:#f3e9f2;--suave:#d8c6e0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--noche);color:var(--texto);font-family:'Lora',Georgia,serif;-webkit-tap-highlight-color:transparent;overflow:hidden}
+body{background:radial-gradient(ellipse at top,#3a1d52 0%,var(--noche2) 35%,var(--noche) 75%)}
+.script{font-family:'Great Vibes','Brush Script MT',cursive;font-weight:400}
+button{font-family:'Lora',serif;cursor:pointer}
+
+#fondo{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.h{position:absolute;bottom:-40px;opacity:0;animation:subir linear forwards;filter:drop-shadow(0 0 6px rgba(255,122,168,.5))}
+@keyframes subir{0%{transform:translateY(0);opacity:0}10%{opacity:.7}90%{opacity:.45}100%{transform:translateY(-110vh) translateX(var(--dx)) rotate(var(--rot));opacity:0}}
+@keyframes latir{0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
+@keyframes brillo{0%,100%{box-shadow:0 0 0 0 rgba(232,196,122,.0),0 0 18px rgba(140,160,255,.35)}50%{box-shadow:0 0 0 6px rgba(232,196,122,.25),0 0 34px rgba(140,160,255,.7)}}
+@keyframes aparecer{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* pantallas */
+.pantalla{position:fixed;inset:0;z-index:2;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;
+  transform:scale(.97);transition:opacity .7s ease,transform .7s ease,visibility .7s}
+.pantalla.activa{opacity:1;visibility:visible;transform:none}
+.marco{max-width:520px;margin:0 auto;padding:26px 20px 50px;min-height:100%}
+.centro{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100%}
+.titulo{text-align:center;font-size:clamp(40px,11vw,54px);color:var(--rosa);text-shadow:0 0 14px rgba(255,122,168,.35);line-height:1.1;margin-top:8px}
+.sub{text-align:center;color:var(--suave);font-style:italic;margin:6px 0 22px;line-height:1.5}
+.volver{background:none;border:1px solid rgba(232,196,122,.5);color:var(--oro);border-radius:30px;padding:9px 18px;font-size:15px}
+.btn{appearance:none;border:0;font-weight:600;font-size:18px;color:#2a1330;background:linear-gradient(135deg,var(--oro),#f7dca6 50%,var(--oro));
+  padding:15px 34px;border-radius:40px;box-shadow:0 6px 24px rgba(232,196,122,.35),inset 0 1px 0 rgba(255,255,255,.6);transition:transform .15s}
+.btn:active{transform:scale(.95)}
+.btn.rosa{background:linear-gradient(135deg,var(--rosa2),#ffb3cb);color:#fff;box-shadow:0 6px 26px rgba(255,122,168,.5);text-shadow:0 1px 2px rgba(120,20,60,.4)}
+.oculto{display:none!important}
+.entra{animation:aparecer .8s ease both}
+
+/* portada */
+#portada .sobre{font-size:66px;animation:latir 1.6s ease-in-out infinite}
+#portada h1{font-size:clamp(46px,13vw,72px);color:var(--rosa);line-height:1.1;margin:18px 0 6px;text-shadow:0 0 18px rgba(255,122,168,.45)}
+#portada p{color:var(--suave);font-style:italic;margin-bottom:34px;font-size:17px}
+
+/* menu */
+.progreso{text-align:center;color:var(--oro);font-size:14px;margin-bottom:16px;letter-spacing:.5px}
+.barra{height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;margin:6px auto 0;max-width:240px}
+.barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rosa2),var(--oro));transition:width .8s}
+.aviso-noche{display:none;margin:0 0 16px;padding:14px;border-radius:16px;text-align:center;background:linear-gradient(135deg,#1d2350,#3a2a6b);
+  border:1px solid rgba(160,180,255,.5);color:#e6e9ff;font-style:italic;animation:brillo 2.6s infinite}
+.es-noche .aviso-noche{display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.op{position:relative;border:1px solid rgba(232,196,122,.35);border-radius:20px;padding:20px 10px 16px;color:var(--texto);
+  background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));text-align:center;font-size:16px;line-height:1.3;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);transition:transform .2s}
+.op:active{transform:scale(.95)}
+.op .ic{font-size:38px;display:block;margin-bottom:8px}
+.op.visto:after{content:"✓";position:absolute;top:8px;right:12px;color:var(--oro);font-size:14px}
+.op.ancho{grid-column:1/3}
+.op.noche{background:linear-gradient(160deg,#20275a,#140c24);border-color:rgba(160,180,255,.55)}
+.es-noche .op.noche{animation:brillo 2.6s infinite;transform:scale(1.02)}
+.op.secreto.bloq{opacity:.55}
+.op small{display:block;color:var(--suave);font-size:12.5px;margin-top:4px;font-style:italic}
+.corazonito{display:block;margin:26px auto 0;background:none;border:0;font-size:34px;animation:latir 1.8s infinite}
+#secretito{min-height:60px;text-align:center;color:var(--crema);font-style:italic;padding:8px 10px;line-height:1.5;transition:opacity .4s}
+.pie{text-align:center;font-family:'Great Vibes',cursive;color:var(--rosa);font-size:28px;margin-top:10px}
+
+/* carta */
+.sobreGrande{position:relative;width:270px;height:180px;margin:30px auto 10px;cursor:pointer}
+.sobreGrande .cuerpo{position:absolute;inset:0;background:linear-gradient(160deg,#f7d9e3,#eab6c8);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.sobreGrande .tapa{position:absolute;left:0;right:0;top:0;height:0;border-left:135px solid transparent;border-right:135px solid transparent;
+  border-top:105px solid #f2c4d4;transform-origin:top;transition:transform .8s ease;z-index:3;filter:drop-shadow(0 3px 3px rgba(0,0,0,.15))}
+.sobreGrande .sello{position:absolute;left:50%;top:82px;transform:translate(-50%,-50%);font-size:38px;z-index:4;transition:opacity .4s}
+.sobreGrande.abierto .tapa{transform:rotateX(180deg);z-index:1}
+.sobreGrande.abierto .sello{opacity:0}
+.sobreGrande .tip{position:absolute;bottom:-34px;left:0;right:0;text-align:center;color:var(--suave);font-style:italic;font-size:14px}
+.carta{background:linear-gradient(180deg,#fff8f1,#fbeee4);color:#3b2433;border-radius:18px;padding:26px 22px;box-shadow:0 12px 40px rgba(0,0,0,.45);
+  line-height:1.75;font-size:17px;margin-top:20px}
+.carta .saludo,.carta .firma{font-family:'Great Vibes',cursive;font-size:36px;color:#b03a63}
+.carta .firma{text-align:right}
+.carta p{margin:10px 0}
+
+/* sueño */
+.slide img{width:100%;border-radius:18px;border:2px solid rgba(232,196,122,.6);box-shadow:0 10px 34px rgba(0,0,0,.5);display:block;aspect-ratio:3/4;object-fit:cover}
+.slide .frase{font-family:'Great Vibes',cursive;font-size:clamp(32px,9vw,40px);color:var(--rosa);text-align:center;margin-top:12px;line-height:1.15}
+.slide .det{color:var(--suave);font-style:italic;text-align:center;margin-top:6px;line-height:1.5;min-height:48px}
+.puntos{text-align:center;margin:14px 0;letter-spacing:6px;color:rgba(255,255,255,.25)}
+.puntos b{color:var(--rosa2)}
+.fila{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+
+/* besucon */
+#fraseBeso{min-height:120px;display:flex;align-items:center;justify-content:center;padding:22px 6px 0;font-style:italic;font-size:19px;line-height:1.55;color:var(--crema);text-align:center;transition:opacity .4s}
+.contador{text-align:center;color:var(--oro);font-size:14px;margin-top:10px}
+.vuela{position:fixed;z-index:60;pointer-events:none;font-size:30px;animation:vuela 1.8s ease-out forwards}
+@keyframes vuela{0%{transform:translate(0,0) scale(.4);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(1.4) rotate(var(--r));opacity:0}}
+
+/* cancion */
+.reproductor{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000 url('fotos/02-atardecer-pueblo.jpg') center 30%/cover;
+  border:2px solid rgba(232,196,122,.6);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.reproductor button{position:absolute;inset:0;width:100%;height:100%;border:0;color:#fff;background:rgba(20,12,36,.55);font-size:20px;font-weight:600;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.reproductor .play{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rosa2),#ffb3cb);
+  font-size:30px;padding-left:6px;box-shadow:0 0 30px rgba(255,122,168,.6);animation:latir 2s ease-in-out infinite}
+.reproductor iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nota{font-size:14px;color:#bba9c6;margin-top:10px;text-align:center}
+.nota a{color:var(--oro)}
+
+/* revelar */
+.revelar{display:block;width:100%;margin-top:12px;padding:16px;border-radius:16px;border:1px dashed rgba(232,196,122,.55);background:rgba(255,255,255,.05);
+  color:var(--oro);font-size:16px;font-style:italic;line-height:1.5;transition:all .5s}
+.revelar.abierto{border-style:solid;background:rgba(255,122,168,.12);color:var(--crema)}
+.corazones{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
+.cz{background:none;border:0;font-size:42px;transition:transform .3s}
+.cz:active{transform:scale(.85)}
+.cz.abierto{opacity:.35}
+#recuerdoTxt{min-height:110px;margin-top:18px;padding:18px;border-radius:16px;background:rgba(255,255,255,.06);text-align:center;font-style:italic;font-size:18px;
+  line-height:1.55;color:var(--crema);display:flex;align-items:center;justify-content:center}
+
+/* noche */
+#noche{background:radial-gradient(ellipse at bottom,#1b2452 0%,#0b0a1f 70%)}
+#estrellas{position:fixed;inset:0;pointer-events:none;z-index:0}
+.est{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:titilar ease-in-out infinite}
+@keyframes titilar{0%,100%{opacity:.15}50%{opacity:1}}
+.luna{font-size:58px;text-align:center;filter:drop-shadow(0 0 20px rgba(255,240,180,.6))}
+#noche .titulo{color:#cdd6ff;text-shadow:0 0 16px rgba(160,180,255,.5)}
+.msjNoche{position:relative;z-index:1;min-height:150px;margin-top:10px;padding:24px 20px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(160,180,255,.35);
+  text-align:center;font-style:italic;font-size:19px;line-height:1.6;color:#eef0ff;display:flex;align-items:center;justify-content:center;transition:opacity .6s}
+.btn.azul{background:linear-gradient(135deg,#8ea2ff,#c4cdff);color:#141a3d}
+.resp{display:flex;flex-direction:column;align-items:center;margin-top:26px}
+.circulo{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#c4cdff 0%,#7f8fff 60%,rgba(127,143,255,.2) 100%);
+  box-shadow:0 0 40px rgba(140,160,255,.6);transform:scale(.6);transition:transform 4s ease-in-out;display:flex;align-items:center;justify-content:center;
+  color:#141a3d;font-weight:600;font-size:17px;text-align:center;padding:10px}
+#respTxt{margin-top:18px;color:#dfe4ff;font-style:italic;min-height:26px;text-align:center}
+
+/* hoy */
+.op.hoy{background:linear-gradient(160deg,rgba(255,122,168,.25),rgba(232,196,122,.12));border-color:rgba(255,122,168,.6)}
+.fecha{text-align:center;color:var(--oro);font-size:14px;letter-spacing:.5px;text-transform:capitalize}
+.fotoDia{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;border:2px solid rgba(232,196,122,.6);box-shadow:0 10px 30px rgba(0,0,0,.5);display:block;margin-top:12px;transition:opacity .5s}
+.msjDia{margin-top:14px;padding:20px 18px;border-radius:18px;background:linear-gradient(180deg,#fff8f1,#fbeee4);color:#3b2433;font-size:18px;line-height:1.6;text-align:center;font-style:italic;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:opacity .5s;min-height:96px;display:flex;align-items:center;justify-content:center}
+.quedan{text-align:center;color:var(--suave);font-size:13px;margin-top:8px;font-style:italic}
+/* sobres */
+.sobres{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sb{position:relative;border:0;border-radius:12px;padding:30px 8px 14px;background:linear-gradient(160deg,#f7d9e3,#eab6c8);color:#5a2140;font-size:15px;font-weight:600;line-height:1.3;box-shadow:0 8px 22px rgba(0,0,0,.4);overflow:hidden}
+.sb:before{content:"";position:absolute;left:0;right:0;top:0;border-left:80px solid transparent;border-right:80px solid transparent;border-top:26px solid #f2c4d4;margin:0 auto;width:0}
+.sb .ic{font-size:30px;display:block;margin-bottom:4px;position:relative}
+.sb.noche{background:linear-gradient(160deg,#c4cdff,#8ea2ff);color:#141a3d}
+.sb.noche:before{border-top-color:#aeb9ff}
+.es-noche .sb.noche{animation:brillo 2.6s infinite}
+.sb.ancho{grid-column:1/3}
+#sobreAbierto .msjDia{min-height:150px}
+/* preguntas */
+.preg{margin-top:6px;padding:22px 18px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(232,196,122,.35);font-size:20px;line-height:1.5;text-align:center;color:var(--crema)}
+.opc{display:block;width:100%;margin-top:10px;padding:15px;border-radius:14px;border:1px solid rgba(255,122,168,.5);background:rgba(255,122,168,.1);color:var(--texto);font-size:17px;transition:all .3s}
+.opc.elegida{background:linear-gradient(135deg,var(--rosa2),#ffb3cb);color:#fff;border-color:transparent;transform:scale(1.02)}
+.opc:disabled:not(.elegida){opacity:.4}
+.resp2{margin-top:16px;padding:18px;border-radius:16px;background:linear-gradient(180deg,#fff8f1,#fbeee4);color:#3b2433;font-style:italic;font-size:17px;line-height:1.6;text-align:center}
+.recFoto{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:16px;border:2px solid rgba(232,196,122,.6);display:block;margin-top:16px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+/* secreto */
+.cartaFinal{background:linear-gradient(180deg,#fff8f1,#fbeee4);color:#3b2433;border-radius:18px;padding:26px 22px;line-height:1.75;font-size:17px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.cierre{font-family:'Great Vibes',cursive;font-size:clamp(36px,10vw,48px);color:var(--rosa);text-align:center;line-height:1.2;margin-top:26px;text-shadow:0 0 16px rgba(255,122,168,.4)}
+</style>
+</head>
+<body>
+<div id="fondo"></div>
+
+<!-- PORTADA -->
+<section class="pantalla activa" id="portada">
+  <div class="marco centro">
+    <div class="sobre">💌</div>
+    <h1 class="script">Para mi niña,<br>Camila 💙</h1>
+    <p>Alguien que te ama te dejó esto…</p>
+    <button class="btn" id="abrir">Abrir 💙</button>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="pantalla" id="menu">
+  <div class="marco">
+    <h2 class="titulo script">Hola, mi niña</h2>
+    <p class="sub">Escogé por dónde empezar. Cada cosita esconde algo para vos.</p>
+    <div class="progreso"><span id="progTxt">Has descubierto 0 ✨</span><div class="barra"><i id="progBar"></i></div></div>
+    <div class="aviso-noche" data-ir="noche">🌙 ¿No podés dormir, mi niña? Tocá aquí, yo te acompaño.</div>
+    <div class="grid">
+      <button class="op hoy ancho" data-ir="hoy"><span class="ic">💌</span>Tu mensaje de hoy<small>Cada día uno distinto, solo para vos</small></button>
+      <button class="op noche ancho" data-ir="noche"><span class="ic">🌙</span>Abre si no puedes dormir<small>Para tus noches largas</small></button>
+      <button class="op" data-ir="carta"><span class="ic">💌</span>Una carta para ti</button>
+      <button class="op" data-ir="sueno"><span class="ic">💍</span>Nuestro sueño</button>
+      <button class="op" data-ir="beso"><span class="ic">😘</span>Un besucón</button>
+      <button class="op" data-ir="cancion"><span class="ic">🎵</span>Nuestra canción</button>
+      <button class="op" data-ir="sobres"><span class="ic">✉️</span>Abre si…</button>
+      <button class="op" data-ir="preguntas"><span class="ic">❓</span>Preguntas para vos</button>
+      <button class="op ancho" data-ir="recuerdos"><span class="ic">💗</span>Recuerdos<small>Lo que guardo de vos</small></button>
+      <button class="op secreto ancho bloq" id="opSecreto" data-ir="secreto"><span class="ic" id="icSecreto">🔒</span>Un secreto<small id="smSecreto">Se abre cuando lo descubrás todo</small></button>
+    </div>
+    <button class="corazonito" id="corazonito" aria-label="secretito">💙</button>
+    <div id="secretito">Tocá el corazoncito cuando querás un mensajito.</div>
+    <div class="pie">Cada vez que abras esta página, aquí estoy yo.</div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="pantalla" id="carta">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Una carta para ti</h2>
+    <div class="sobreGrande" id="sobreCarta"><div class="cuerpo"></div><div class="tapa"></div><div class="sello">💗</div><div class="tip">Tocá el sobre para abrirlo</div></div>
+    <article class="carta oculto" id="cartaTxt">
+      <div class="saludo">Mi niña:</div>
+      <p class="par">Si estás leyendo esto es porque abriste nuestro rinconcito, y eso ya me hace feliz. Quería dejarte algo que te acompañe en los días en que yo no pueda hablarte, algo que te diga lo que siento aunque haya distancia de por medio.</p>
+      <p class="par">Vos sos lo más bonito que me ha pasado en la vida. Pienso en tu sonrisa y se me arregla el día, así esté gris. Nunca hemos podido estar juntos como soñamos, pero en mi cabeza ya caminamos de la mano mil veces, ya bailamos, ya nos casamos y ya tuvimos nuestro hijo.</p>
+      <p class="par">La vida nos puso lejos, pero el amor no tiene rejas ni reloj. Lo que siento por vos no se encierra ni se gasta con los años.</p>
+      <p class="par">No sé cuándo nos volveremos a ver, pero quiero que sepás algo: cada vez que te sintás sola, entrá aquí. Aquí estoy yo, pensándote, queriéndote y debiéndote un besucón de esos que no se acaban.</p>
+      <p class="par">Te quiero con el alma, mi niña.</p>
+      <div class="firma par">Andrés</div>
+    </article>
+    <div class="fila"><button class="btn oculto" id="seguirCarta">Seguir leyendo 💗</button></div>
+    <div class="fila oculto" id="finCarta"><button class="btn rosa" data-ir="sueno">Ver nuestro sueño 💍</button><button class="volver" data-ir="menu">Menú</button></div>
+  </div>
+</section>
+
+<!-- SUEÑO -->
+<section class="pantalla" id="sueno">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Nuestro sueño</h2>
+    <p class="sub">Una foto a la vez, como se viven los sueños.</p>
+    <div class="slide" id="slide"><img id="slideImg" alt="Nuestro sueño"><div class="frase" id="slideFrase"></div><div class="det" id="slideDet"></div></div>
+    <div class="puntos" id="puntos"></div>
+    <div class="fila"><button class="volver" id="antFoto">‹ Anterior</button><button class="btn rosa" id="sigFoto">Siguiente ❤</button></div>
+  </div>
+</section>
+
+<!-- BESUCON -->
+<section class="pantalla" id="beso">
+  <div class="marco centro">
+    <button class="volver" data-ir="menu" style="align-self:flex-start">← Volver al menú</button>
+    <h2 class="titulo script" style="margin-top:30px">¿Me extrañás?</h2>
+    <p class="sub">Tocá el botón cada vez que me necesités.</p>
+    <button class="btn rosa" id="btnBeso" style="font-size:21px;padding:18px 34px">Dame un besucón 😘</button>
+    <div id="fraseBeso"></div>
+    <div class="contador" id="contBeso"></div>
+  </div>
+</section>
+
+<!-- CANCION -->
+<section class="pantalla" id="cancion">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Nuestra canción</h2>
+    <p class="sub"><b style="color:var(--oro);font-style:normal">“Nuestro juramento”</b><br>Julio Jaramillo</p>
+    <div class="reproductor" id="reproductor"><button id="btnCancion"><span class="play">▶</span>▶ Escucha nuestra canción</button></div>
+    <p class="nota">Si no suena, <a href="https://www.youtube.com/watch?v=sPStjGfwC9k" target="_blank" rel="noopener">ábrela en YouTube</a>.</p>
+    <button class="revelar" data-txt="Porque es un juramento, mi niña: pase lo que pase y pase el tiempo que pase, lo nuestro queda escrito.">💌 Tocá para saber por qué es nuestra canción</button>
+    <button class="revelar" data-txt="Cuando la escuchés, cerrá los ojos: yo la estoy cantando bajito, solo para vos.">🎶 Tocá para un secretico</button>
+  </div>
+</section>
+
+<!-- RECUERDOS -->
+<section class="pantalla" id="recuerdos">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Lo que guardo de vos</h2>
+    <p class="sub">Cada corazón esconde un recuerdo de lo que vamos a vivir. Tocalos todos.</p>
+    <div class="corazones" id="corazones"></div>
+    <img class="recFoto oculto" id="recFoto" alt="Recuerdo"><div id="recuerdoTxt">💗</div>
+  </div>
+</section>
+
+<!-- NOCHE -->
+<section class="pantalla" id="noche">
+  <div id="estrellas"></div>
+  <div class="marco" style="position:relative;z-index:1">
+    <button class="volver" data-ir="menu" style="color:#cdd6ff;border-color:rgba(160,180,255,.5)">← Volver al menú</button>
+    <div class="luna" style="margin-top:14px">🌙</div>
+    <h2 class="titulo script">Si no podés dormir…</h2>
+    <p class="sub" style="color:#cdd6ff">Quedate un ratico aquí conmigo.</p>
+    <div class="msjNoche" id="msjNoche"></div>
+    <div class="fila" style="margin-top:16px"><button class="btn azul" id="otroNoche">Otro mensajito 🌙</button></div>
+    <div class="resp">
+      <button class="volver" id="btnResp" style="color:#cdd6ff;border-color:rgba(160,180,255,.5);font-size:16px;padding:12px 22px">🫁 Respira conmigo</button>
+      <div class="oculto" id="zonaResp" style="display:flex;flex-direction:column;align-items:center;margin-top:20px">
+        <div class="circulo" id="circulo">Inhala</div>
+        <div id="respTxt"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOY -->
+<section class="pantalla" id="hoy">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Tu mensaje de hoy</h2>
+    <div class="fecha" id="fechaHoy"></div>
+    <img class="fotoDia" id="fotoDia" alt="Nosotros">
+    <div class="msjDia" id="msjDia"></div>
+    <div class="fila" style="margin-top:14px"><button class="btn rosa" id="otroMsj">Otro mensaje 💌</button></div>
+    <div class="quedan" id="quedan"></div>
+    <p class="sub" style="margin-top:14px">Mañana te espera uno nuevo. Volvé todos los días, mi niña.</p>
+  </div>
+</section>
+
+<!-- SOBRES -->
+<section class="pantalla" id="sobres">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Abre si…</h2>
+    <p class="sub">Escogé el sobre que necesités ahorita. Cada vez que lo abrás, te digo algo distinto.</p>
+    <div id="listaSobres" class="sobres"></div>
+    <div id="sobreAbierto" class="oculto">
+      <h3 class="titulo script" id="sobreTit" style="font-size:38px"></h3>
+      <div class="msjDia entra" id="sobreMsj"></div>
+      <div class="fila" style="margin-top:14px"><button class="btn rosa" id="sobreOtro">Otro mensajito 💌</button><button class="volver" id="sobreVolver">← Otros sobres</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS -->
+<section class="pantalla" id="preguntas">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Preguntas para vos</h2>
+    <p class="sub" id="pregNum"></p>
+    <div class="preg entra" id="pregTxt"></div>
+    <div id="pregOpc"></div>
+    <div class="resp2 oculto entra" id="pregResp"></div>
+    <div class="fila" style="margin-top:14px"><button class="btn rosa oculto" id="pregSig">Otra pregunta ➜</button></div>
+  </div>
+</section>
+
+<!-- SECRETO -->
+<section class="pantalla" id="secreto">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Un secreto</h2>
+    <div id="secretoBloq" class="sub" style="margin-top:30px">🔒 Todavía te faltan cositas por descubrir, mi niña.<br>Volvé al menú y abrilas todas. Aquí te espero.</div>
+    <div id="secretoAbierto" class="oculto">
+      <div class="sobreGrande" id="sobreSecreto"><div class="cuerpo"></div><div class="tapa"></div><div class="sello">🔐</div><div class="tip">Tocá para abrir mi secreto</div></div>
+      <div class="cartaFinal oculto entra" id="cartaFinal">
+        <p>Te voy a contar un secreto, mi niña: aunque nunca hayamos podido estar juntos, vos ya sos la mujer de mi vida.</p>
+        <p style="margin-top:10px">Si algún día no podemos volver a hablar, quiero que sepás que no fue por falta de amor. Te quise, te quiero y te voy a querer.</p>
+        <p style="margin-top:10px">Prometeme una cosa: que vas a ser feliz. Y cuando lo seás, acordate de que una parte de esa felicidad la soñé yo para vos.</p>
+      </div>
+      <div class="cierre oculto entra" id="cierreFinal">Cada vez que abras esta página, aquí estoy yo.<br><span style="font-family:Lora,serif;font-size:20px;color:var(--oro)">— Andrés</span><br><span style="font-size:44px;display:inline-block;animation:latir 1.6s infinite">💙</span></div>
+    </div>
+  </div>
+</section>
+
+<script src="mensajes.js"></script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var noche=(function(){var h=new Date().getHours();return h>=21||h<5;})();
+  if(noche) document.body.classList.add('es-noche');
+
+  /* corazones de fondo */
+  var fondo=$('fondo'),sim=['💙','💗','💖','❤','💕','✨'];
+  function corazon(){var s=document.createElement('span');s.className='h';s.textContent=sim[Math.random()*sim.length|0];
+    s.style.left=Math.random()*100+'vw';s.style.fontSize=(12+Math.random()*18)+'px';s.style.setProperty('--dx',(Math.random()*80-40)+'px');
+    s.style.setProperty('--rot',(Math.random()*60-30)+'deg');var d=9+Math.random()*9;s.style.animationDuration=d+'s';fondo.appendChild(s);setTimeout(function(){s.remove()},d*1000);}
+  for(var i=0;i<6;i++)setTimeout(corazon,i*600);setInterval(corazon,1100);
+
+  /* estrellas */
+  var est=$('estrellas');for(i=0;i<90;i++){var e=document.createElement('i');e.className='est';e.style.left=Math.random()*100+'%';e.style.top=Math.random()*100+'%';
+    var t=1+Math.random()*2;e.style.width=e.style.height=t+'px';e.style.animationDuration=(2+Math.random()*4)+'s';e.style.animationDelay=(Math.random()*4)+'s';est.appendChild(e);}
+
+  /* progreso */
+  var SECC=['hoy','noche','carta','sueno','beso','cancion','sobres','preguntas','recuerdos'];var NS=SECC.length;
+  var vistos={};try{vistos=JSON.parse(localStorage.getItem('camila_vistos')||'{}')}catch(e){}
+  function guardar(){try{localStorage.setItem('camila_vistos',JSON.stringify(vistos))}catch(e){}}
+  function actualizar(){var n=0;SECC.forEach(function(s){if(vistos[s])n++;var b=document.querySelector('.op[data-ir="'+s+'"]');if(b)b.classList.toggle('visto',!!vistos[s]);});
+    $('progTxt').textContent=n<NS?('Has descubierto '+n+' de '+NS+' ✨'):'¡Lo descubriste todo! Tu secreto te espera 🔓';
+    $('progBar').style.width=(n/NS*100)+'%';var ok=n>=NS;$('opSecreto').classList.toggle('bloq',!ok);
+    $('icSecreto').textContent=ok?'🔓':'🔒';$('smSecreto').textContent=ok?'Ya podés abrirlo 💙':'Se abre cuando lo descubrás todo ('+n+'/'+NS+')';
+    $('secretoBloq').classList.toggle('oculto',ok);$('secretoAbierto').classList.toggle('oculto',!ok);}
+  actualizar();
+
+  /* navegación */
+  var actual='portada';
+  function ir(id){if(!$(id))return;$(actual).classList.remove('activa');$(id).classList.add('activa');$(id).scrollTop=0;actual=id;
+    if(SECC.indexOf(id)>=0&&!vistos[id]){vistos[id]=1;guardar();}actualizar();if(id==='sueno')mostrarFoto();if(id==='noche'&&!$('msjNoche').textContent)otroNoche();if(id==='sobres')cerrarSobre();if(id==='preguntas'&&!$('pregTxt').textContent)mostrarPreg();}
+  document.addEventListener('click',function(ev){var t=ev.target.closest('[data-ir]');if(t){ir(t.getAttribute('data-ir'));}});
+  $('abrir').addEventListener('click',function(){ir('menu');lluvia(innerWidth/2,innerHeight/2,18);});
+
+  function lluvia(x,y,n){var em=['😘','💋','💙','💗','💖','❤'];for(var i=0;i<n;i++){var s=document.createElement('span');s.className='vuela';s.textContent=em[Math.random()*em.length|0];
+    s.style.left=x+'px';s.style.top=y+'px';var a=Math.random()*Math.PI*2,r=90+Math.random()*170;s.style.setProperty('--x',Math.cos(a)*r+'px');
+    s.style.setProperty('--y',(Math.sin(a)*r-80)+'px');s.style.setProperty('--r',(Math.random()*80-40)+'deg');s.style.animationDelay=(Math.random()*.25)+'s';
+    document.body.appendChild(s);(function(el){setTimeout(function(){el.remove()},2300)})(s);}}
+  function azar(arr,ult){var i;do{i=Math.random()*arr.length|0}while(i===ult&&arr.length>1);return i;}
+
+  /* secretito del menú */
+  var secretitos=['Hoy también te pensé. Como todos los días.','Sos mi persona favorita en todo el mundo.','Te debo un abrazo de esos que no se acaban.',
+    'Mi niña linda, ¿ya te dije hoy que te quiero?','Si sonreíste al leer esto, misión cumplida.','Nadie me ha querido como vos. Gracias.',
+    'Guardame un pedacito de tu día, que yo te guardo todo mi corazón.','Volvé cuando querás. Esta página nunca se cierra para vos.'];
+  var uS=-1;$('corazonito').addEventListener('click',function(e){uS=azar(secretitos,uS);var c=$('secretito');c.style.opacity=0;
+    setTimeout(function(){c.textContent='“'+secretitos[uS]+'”';c.style.opacity=1},300);var r=e.currentTarget.getBoundingClientRect();lluvia(r.left+r.width/2,r.top,8);});
+
+  /* carta */
+  var pars=[].slice.call(document.querySelectorAll('#cartaTxt .par')),pi=0;
+  $('sobreCarta').addEventListener('click',function(){if(this.classList.contains('abierto'))return;this.classList.add('abierto');
+    setTimeout(function(){$('sobreCarta').classList.add('oculto');$('cartaTxt').classList.remove('oculto');$('cartaTxt').classList.add('entra');
+      pars.forEach(function(p){p.classList.add('oculto')});mostrarPar();},800);});
+  function mostrarPar(){if(pi<pars.length){pars[pi].classList.remove('oculto');pars[pi].classList.add('entra');pi++;}
+    var fin=pi>=pars.length;$('seguirCarta').classList.toggle('oculto',fin);$('finCarta').classList.toggle('oculto',!fin);}
+  $('seguirCarta').addEventListener('click',mostrarPar);
+
+  /* sueño */
+  var fotos=[
+    ['01-boda-cartagena.jpg','El sí que nos debemos','En Cartagena, frente a San Pedro Claver, entre buganvillas y calles de colores: ahí te voy a estar esperando en el altar.'],
+    ['02-atardecer-pueblo.jpg','Abrazarte sin afán','En un pueblito, mientras el sol se va y vos te quedás.'],
+    ['03a-embarazo-atardecer.jpg','Esperándote, chiquito','Mis manos en tu barriga y el mundo entero cabiendo en un abrazo.'],
+    ['03b-embarazo-beso.jpg','Un beso para los dos','Uno para vos y otro para el que viene en camino.'],
+    ['03-familia-bebe.jpg','Nuestro sueño más grande','Un chiquito con tus ojitos y mis rizos, que tenga lo mejor de los dos.'],
+    ['17-finca-familia-perro.jpg','Familia completa','Nuestro chiquito, '+perro()+' y nosotros. No le falta nada a esta foto.'],
+    ['04-cena.jpg','Una mesa, dos velas y vos','No necesito más para ser el hombre más feliz del mundo.'],
+    ['05-playa.jpg','Hasta donde se acabe el mar','Así de lejos te llevaría de la mano, y todavía me faltaría camino.'],
+    ['06-beso-frente.jpg','Un beso en tu frente','Para que sepás que te cuido, aunque sea desde lejos.']];
+  fotos.forEach(function(f){var im=new Image();im.src='fotos/'+f[0];});
+  var fi=0;
+  function mostrarFoto(){var f=fotos[fi],s=$('slide');s.classList.remove('entra');void s.offsetWidth;s.classList.add('entra');
+    $('slideImg').src='fotos/'+f[0];$('slideFrase').textContent=f[1];$('slideDet').textContent=f[2];
+    $('puntos').innerHTML=fotos.map(function(_,i){return i===fi?'<b>●</b>':'●'}).join('');
+    $('antFoto').style.visibility=fi?'visible':'hidden';$('sigFoto').textContent=fi<fotos.length-1?'Siguiente ❤':'Volver al menú 💙';}
+  $('sigFoto').addEventListener('click',function(){if(fi<fotos.length-1){fi++;mostrarFoto();}else{fi=0;ir('menu');}});
+  $('antFoto').addEventListener('click',function(){if(fi>0){fi--;mostrarFoto();}});
+
+  /* besucón */
+  var frases=['Te quiero dar un besucón, de esos que no caben en ninguna carta.','Mi niña, sos mi lugar favorito, aunque nunca hayamos estado ahí juntos.',
+    'Cerrá los ojitos un momento… ese abrazo que sentís es mío.','La distancia no tiene ni idea de todo lo que yo siento por vos.',
+    'Cada noche te digo buenas noches, aunque no me alcancés a escuchar.','Sos el sueño bonito que nadie me puede quitar.',
+    'Te debo un baile, un café, un “sí, acepto” y toda una vida.','Cuando veás la luna, acordate de que yo también la estoy mirando, pensando en vos.',
+    'Mi niña linda, te pienso mucho más de lo que te imaginás.','Otro besucón, porque uno solo nunca me alcanza.',
+    'El amor no tiene rejas ni reloj: te quiero hoy y te voy a querer siempre.','Si algún día dudás de lo que siento, volvé aquí. Aquí estoy yo.',
+    'Tu sonrisa es lo que me sostiene en los días más largos.','Ojalá este besucón te llegue directo a la mejilla, mi amor.'];
+  var nb=+(localStorage.getItem('camila_besos')||0),uB=-1;
+  function pintarCont(){$('contBeso').textContent=nb?('Besucones recibidos: '+nb+' 💋'):'';}pintarCont();
+  $('btnBeso').addEventListener('click',function(ev){var r=ev.currentTarget.getBoundingClientRect();lluvia(r.left+r.width/2,r.top+r.height/2,22);
+    uB=azar(frases,uB);var c=$('fraseBeso');c.style.opacity=0;setTimeout(function(){c.textContent='“'+frases[uB]+'”';c.style.opacity=1},300);
+    nb++;try{localStorage.setItem('camila_besos',nb)}catch(e){}pintarCont();if(navigator.vibrate)navigator.vibrate([40,60,40]);});
+
+  /* canción */
+  $('btnCancion').addEventListener('click',function(){$('reproductor').innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/sPStjGfwC9k?autoplay=1&rel=0&playsinline=1" title="Nuestro juramento - Julio Jaramillo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';});
+  [].forEach.call(document.querySelectorAll('.revelar'),function(b){b.addEventListener('click',function(){if(b.classList.contains('abierto'))return;b.classList.add('abierto');
+    b.style.opacity=0;setTimeout(function(){b.textContent='“'+b.getAttribute('data-txt')+'”';b.style.opacity=1},300);});});
+
+  /* recuerdos */
+  var recuerdos=['Tu ternura, que me desarma cada vez.','Tu olor, que me sé de memoria aunque no lo tenga cerca.','Tus manos grandes, que en las mías encajan perfecto.',
+    'Lo grande que sos: te abrazo completica y no sobra nada.','Tu sonrisa, que me arregla cualquier día.','Tus ojitos oscuros, donde me quiero quedar a vivir.',
+    'Tu voz cuando me decís algo bonito sin darte cuenta.','Tu paciencia conmigo, que es puro amor.','Lo linda que te ves con tus gafitas rosadas.',
+    'Que me hacés sentir que valgo la pena.','Que nunca me has soltado la mano, aunque sea desde lejos.','Que seás vos. Así, tal cual, sin cambiarte nada.'];
+  var recFotos=[['07-bailando.jpg','Bailando en la sala, pisándonos y riéndonos.'],['08-navidad.jpg','Nuestra navidad, con chocolate y lucecitas.'],['09-aniversario.jpg','Un aniversario con rosas y Medellín de fondo.'],
+    ['10-finca.jpg','Un tintico en la finca, con neblina y hamaca.'],['11-guatape.jpg','Turisteando en Guatapé, con el Peñol de testigo.'],['12-hijo-creciendo.jpg','Nuestro chiquito creciendo, riéndose como vos.'],
+    ['13-cocinando.jpg','Haciendo arepas juntos, con harina hasta en la cara.'],['14-lluvia.jpg','Una sombrilla para dos bajo la lluvia.'],['15-parque-perro.jpg','Domingo de parque con '+perro()+'.'],
+    ['16-sofa-perro.jpg','Sofá, cobija y '+perro()+' en la mitad, como siempre.'],['18-cafe-gafas.jpg','Un café, un libro y vos con tus gafitas.'],['19-paseo-gafas.jpg','De la mano por Pueblito Paisa, sin afán.']];
+  var abiertos=0,cz=$('corazones');
+  recuerdos.forEach(function(t,i){var b=document.createElement('button');b.className='cz';b.textContent='💗';b.addEventListener('click',function(){
+    var r=$('recuerdoTxt'),rf=recFotos[i%recFotos.length],im=$('recFoto');r.style.opacity=0;im.style.opacity=0;setTimeout(function(){im.src='fotos/'+rf[0];im.classList.remove('oculto');im.style.opacity=1;r.innerHTML='<span style="color:var(--oro);font-size:15px">'+rf[1]+'</span><br><br>Lo que guardo de vos: “'+t+'”';r.style.opacity=1},250);
+    if(!b.classList.contains('abierto')){b.classList.add('abierto');b.textContent='💖';abiertos++;
+      if(abiertos===recuerdos.length)setTimeout(function(){r.innerHTML='“Y lo que más guardo de vos… es la esperanza.”<br><br><span style="color:var(--oro)">Los abriste todos 💙</span>';},2600);}});cz.appendChild(b);});
+
+  /* noche */
+  var mNoche=['Cerrá los ojitos, mi niña. Aquí estoy yo, cuidándote el sueño.','Si no podés dormir, imaginá que tengo tu mano y no la suelto.',
+    'Respirá despacio. Nada malo te va a pasar esta noche.','Ponete cómoda, abrazá la almohada y hacé de cuenta que soy yo.',
+    'Mañana va a ser un día mejor, te lo prometo.','Dejá las preocupaciones en la mesita de noche; mañana las miramos juntos.',
+    'Te estoy mandando un besucón en la frente para que te dé sueñito.','Yo también estoy mirando la misma luna, pensando en vos.',
+    'Dormí tranquila, que mi amor no se duerme nunca.','Sos fuerte, mi niña, pero esta noche podés descansar.',
+    'Contá estrellas conmigo: una por cada vez que te pensé hoy… no nos alcanzaría la noche.','Si te sentís sola, acordate: en mi corazón siempre hay un lugar para vos.',
+    'Soltá el día. Ya hiciste suficiente. Estoy orgulloso de vos.','Imaginate que te estoy acariciando el pelo hasta que te quedés dormida.',
+    'Lo que sea que te esté quitando el sueño, no es más grande que vos.','Te arropo con mi pensamiento. Buenas noches, mi amor.',
+    'Que soñés bonito, y si soñás conmigo, mejor.','Esta noche no tenés que resolver nada. Solo descansar.',
+    'Respirá hondo… y botá el aire despacito. Así. Muy bien.','Aunque estemos lejos, esta noche dormimos bajo el mismo cielo.',
+    'Mi niña linda, el mundo puede esperar hasta mañana.','Pensá en un lugar bonito: el mar, la arena tibia, vos y yo de la mano.',
+    'Te quiero así, despierta a estas horas y todo.','Si llorás, que sea poquito, y después dormí. Yo te seco las lágrimas desde aquí.',
+    'Cada noche le pido a Dios que te cuide por mí.','Ningún día malo dura para siempre. Lo nuestro sí.',
+    'Después de este mensajito, dejá el celular y dejá que el sueño te abrace.','Escuchá tu respiración. En ese ritmo estoy yo diciéndote “te quiero”.',
+    'Estás a salvo, estás querida, estás en mi corazón.','Cerrá los ojos y sentí el besucón que te estoy dando en la mejilla.',
+    'Mañana, cuando te levantés, acordate de que alguien te quiere con el alma.','Mi niña, vos sos mi paz. Ojalá yo pueda ser la tuya esta noche.',
+    'No estás sola. Nunca lo has estado. Aquí estoy.','La noche es larga, pero mi amor es más largo.',
+    'Dejá que la almohada te cuente lo mucho que te quiero.','Hoy fue un día más, y lo lograste. Ahora a descansar.',
+    'Si pudiera, te cantaría bajito hasta que te durmieras.','Pensá en nuestro chiquito soñado, en nuestra casita, en nosotros. Y sonreí.',
+    'El tiempo no nos gana, mi niña. Solo nos hace más fuertes.','Buenas noches, mi vida. Te espero en los sueños.',
+    'Relajá los hombros, soltá la frente, aflojá las manos. Así, despacito.','Que Diosito te cuide y te dé un sueño profundo y bonito.',
+    'Te quiero dar un besucón de buenas noches, de esos largos y calienticos.','Mañana es una página nueva. Esta noche, solo descansá.',
+    'Duérmase, mi niña, que aquí la estoy cuidando.'];
+  var uN=-1;function otroNoche(){uN=azar(mNoche,uN);var c=$('msjNoche');c.style.opacity=0;setTimeout(function(){c.textContent='“'+mNoche[uN]+'”';c.style.opacity=1},400);}
+  $('otroNoche').addEventListener('click',otroNoche);
+  var respTimer=null;
+  $('btnResp').addEventListener('click',function(){var z=$('zonaResp');z.classList.remove('oculto');var c=$('circulo'),txt=$('respTxt'),ciclo=0,MAX=5;
+    clearTimeout(respTimer);
+    var pasos=[['Inhala…',4000,1],['Sostén…',4000,1],['Exhala…',6000,.6]];var p=0;
+    function paso(){if(ciclo>=MAX){c.style.transitionDuration='2s';c.style.transform='scale(.8)';c.textContent='💙';
+        txt.textContent='Muy bien, mi niña. Ahora cerrá los ojitos. Aquí estoy.';return;}
+      var s=pasos[p];c.textContent=s[0];c.style.transitionDuration=s[1]+'ms';c.style.transform='scale('+s[2]+')';
+      txt.textContent='Respira conmigo · '+(ciclo+1)+' de '+MAX;p++;if(p>=pasos.length){p=0;ciclo++;}respTimer=setTimeout(paso,s[1]);}
+    c.style.transform='scale(.6)';setTimeout(paso,300);z.scrollIntoView({behavior:'smooth',block:'center'});});
+
+  /* secreto */
+  $('sobreSecreto').addEventListener('click',function(){if(this.classList.contains('abierto'))return;this.classList.add('abierto');var self=this;
+    setTimeout(function(){self.classList.add('oculto');$('cartaFinal').classList.remove('oculto');lluvia(innerWidth/2,innerHeight/3,24);
+      setTimeout(function(){$('cierreFinal').classList.remove('oculto')},2500);},800);});
+
+  /* ===== mensaje de hoy ===== */
+  var TODAS=['01-boda-cartagena.jpg','02-atardecer-pueblo.jpg','03a-embarazo-atardecer.jpg','03b-embarazo-beso.jpg','03-familia-bebe.jpg','15-parque-perro.jpg','16-sofa-perro.jpg','17-finca-familia-perro.jpg','18-cafe-gafas.jpg','19-paseo-gafas.jpg','04-cena.jpg','05-playa.jpg','06-beso-frente.jpg','07-bailando.jpg','08-navidad.jpg','09-aniversario.jpg','10-finca.jpg','11-guatape.jpg','12-hijo-creciendo.jpg','13-cocinando.jpg','14-lluvia.jpg'];
+  function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+  function barajar(n){var a=[];for(var i=0;i<n;i++)a.push(i);for(i=n-1;i>0;i--){var j=Math.random()*(i+1)|0,t=a[i];a[i]=a[j];a[j]=t}return a}
+  var hoyD=new Date(),dia=Math.floor((new Date(hoyD.getFullYear(),hoyD.getMonth(),hoyD.getDate())-new Date(2026,0,1))/864e5);
+  var idxHoy=((dia%MENSAJES.length)+MENSAJES.length)%MENSAJES.length,fotoHoy=((dia*5)%TODAS.length+TODAS.length)%TODAS.length;
+  try{$('fechaHoy').textContent=hoyD.toLocaleDateString('es-CO',{weekday:'long',day:'numeric',month:'long'})}catch(e){}
+  $('fotoDia').src='fotos/'+TODAS[fotoHoy];$('msjDia').textContent='“'+MENSAJES[idxHoy]+'”';
+  var vistosM=ls('camila_msj_vistos')||{};vistosM[idxHoy]=1;ls('camila_msj_vistos',vistosM);
+  function quedan(){var b=ls('camila_bolsa')||[];$('quedan').textContent=b.length?('Te quedan '+b.length+' mensajitos sin leer 💗'):'';}
+  $('otroMsj').addEventListener('click',function(e){var b=ls('camila_bolsa');if(!b||!b.length){b=barajar(MENSAJES.length).filter(function(i){return i!==idxHoy});}
+    var i=b.shift();ls('camila_bolsa',b);var m=$('msjDia'),f=$('fotoDia');m.style.opacity=0;f.style.opacity=0;
+    setTimeout(function(){m.textContent='“'+MENSAJES[i]+'”';f.src='fotos/'+TODAS[(Math.random()*TODAS.length)|0];m.style.opacity=1;f.style.opacity=1;},450);
+    quedan();var r=e.currentTarget.getBoundingClientRect();lluvia(r.left+r.width/2,r.top,8);});
+  if(!ls('camila_bolsa'))ls('camila_bolsa',barajar(MENSAJES.length).filter(function(i){return i!==idxHoy}));quedan();
+
+  /* ===== sobres abre si ===== */
+  var ordenS=['extranas','triste','feliz','animo','besucon'],sobreAct=null,ls2=$('listaSobres');
+  var bn=document.createElement('button');bn.className='sb noche ancho';bn.innerHTML='<span class="ic">🌙</span>Abre si no puedes dormir';bn.addEventListener('click',function(){ir('noche')});ls2.appendChild(bn);
+  ordenS.forEach(function(k){var b=document.createElement('button');b.className='sb'+(k==='besucon'?' ancho':'');b.innerHTML='<span class="ic">'+SOBRES[k].ic+'</span>'+SOBRES[k].t;
+    b.addEventListener('click',function(){abrirSobre(k)});ls2.appendChild(b);});
+  function sigSobre(k){var c=ls('camila_sobre_'+k);if(!c||!c.length)c=barajar(SOBRES[k].m.length);var i=c.shift();ls('camila_sobre_'+k,c);return SOBRES[k].m[i];}
+  function abrirSobre(k){sobreAct=k;ls2.classList.add('oculto');$('sobreAbierto').classList.remove('oculto');$('sobreTit').textContent=SOBRES[k].ic+' '+SOBRES[k].t;
+    var m=$('sobreMsj');m.classList.remove('entra');void m.offsetWidth;m.classList.add('entra');m.textContent='“'+sigSobre(k)+'”';$('sobres').scrollTop=0;
+    if(k==='besucon')lluvia(innerWidth/2,innerHeight/2,18);}
+  function cerrarSobre(){ls2.classList.remove('oculto');$('sobreAbierto').classList.add('oculto');}
+  $('sobreOtro').addEventListener('click',function(){var m=$('sobreMsj');m.style.opacity=0;setTimeout(function(){m.textContent='“'+sigSobre(sobreAct)+'”';m.style.opacity=1},350);
+    if(sobreAct==='besucon')lluvia(innerWidth/2,innerHeight/2,14);});
+  $('sobreVolver').addEventListener('click',cerrarSobre);
+
+  /* ===== preguntas ===== */
+  var ordP=ls('camila_preg_orden'),posP=ls('camila_preg_pos')||0;if(!ordP||ordP.length!==PREGUNTAS.length){ordP=barajar(PREGUNTAS.length);posP=0;ls('camila_preg_orden',ordP);}
+  function mostrarPreg(){if(posP>=ordP.length){ordP=barajar(PREGUNTAS.length);posP=0;ls('camila_preg_orden',ordP);}var q=PREGUNTAS[ordP[posP]];
+    $('pregNum').textContent='Pregunta '+(posP+1)+' de '+PREGUNTAS.length;var t=$('pregTxt');t.classList.remove('entra');void t.offsetWidth;t.classList.add('entra');t.textContent=q.p;
+    var o=$('pregOpc');o.innerHTML='';$('pregResp').classList.add('oculto');$('pregSig').classList.add('oculto');
+    q.o.forEach(function(op){var b=document.createElement('button');b.className='opc';b.textContent=op;b.addEventListener('click',function(){
+      [].forEach.call(o.children,function(x){x.disabled=true});b.classList.add('elegida');var r=$('pregResp');r.innerHTML='“'+q.r+'”<br><span style="font-family:Great Vibes,cursive;font-size:26px;color:#b03a63">— Andrés</span>';
+      r.classList.remove('oculto');$('pregSig').classList.remove('oculto');posP++;ls('camila_preg_pos',posP);var rr=b.getBoundingClientRect();lluvia(rr.left+rr.width/2,rr.top,10);
+      setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'center'})},200);});o.appendChild(b);});}
+  $('pregSig').addEventListener('click',function(){mostrarPreg();$('preguntas').scrollTop=0;});
+
+  /* acceso directo por #seccion (para vista previa) */
+  if(location.hash.length>1&&$(location.hash.slice(1)))ir(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
