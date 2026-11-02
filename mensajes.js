@@ -1,6 +1,6 @@
 /* Mensajes de Andrés para Camila */
 /* Nombre del perro: escribilo entre las comillas cuando lo sepamos */
-var NOMBRE_PERRO="";
+var NOMBRE_PERRO="Chimuelo";
 function perro(){return NOMBRE_PERRO||"nuestro perrito";}
 var MENSAJES=[
 "Buenos días, mi niña. Que hoy te vaya tan bonito como sos vos.",
