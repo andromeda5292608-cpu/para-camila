@@ -3,6 +3,12 @@
 var NOMBRE_PERRO="Chimuelo";
 function perro(){return NOMBRE_PERRO||"nuestro perrito";}
 var MENSAJES=[
+"Dale un abrazo a Chimuelo de mi parte, mi niña. Él sabe cuidarte cuando yo no estoy.",
+"Chimuelo es nuestra Furia Nocturna: chiquito por fuera, valiente por dentro, como el amor que te tengo.",
+"Cuando Chimuelo se te acueste al lado, imaginate que ese calorcito también es mío.",
+"Si Chimuelo te mira con esos ojitos, es porque sabe que alguien te quiere muchísimo.",
+"Chimuelo, vos y yo: la familia que siempre soñé.",
+"Rascale la barriguita a Chimuelo y decile que su papá lo extraña.",
 "Buenos días, mi niña. Que hoy te vaya tan bonito como sos vos.",
 "Arrancá el día sabiendo que alguien te piensa desde que abre los ojos.",
 "Buenos días, mi amor. Hoy también te quiero, como ayer y como mañana.",
