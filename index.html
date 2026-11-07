@@ -173,6 +173,9 @@ button{font-family:'Lora',serif;cursor:pointer}
 .cuenta b{display:block;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(66px,19vw,88px);line-height:.9;color:var(--rosa);text-shadow:0 0 24px rgba(255,122,168,.5)}
 .cuenta span{display:block;margin-top:8px;color:var(--suave);font-style:italic;font-size:16px}
 .cuenta small{display:block;margin-top:4px;color:#bba9c6;font-size:13px;letter-spacing:.4px}
+.antes{text-align:center;color:#bba9c6;font-style:italic;font-size:14px;letter-spacing:.3px;margin-top:22px}
+.cuenta.amor{margin-top:6px}
+.cuenta.amor b{font-size:clamp(54px,15vw,70px);color:var(--oro);text-shadow:0 0 20px rgba(232,196,122,.45)}
 .collage{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
 .collage figure{position:relative;overflow:hidden;border-radius:16px;border:2px solid rgba(232,196,122,.55);box-shadow:0 8px 24px rgba(0,0,0,.45)}
 .collage figure.grande{grid-column:1/3}
@@ -305,11 +308,13 @@ button{font-family:'Lora',serif;cursor:pointer}
     <button class="volver" data-ir="menu">← Volver al menú</button>
     <h2 class="titulo script">Nuestros 3 meses</h2>
     <p class="badgeFecha" id="fechaMeses"></p>
-    <div class="cuenta"><b id="numMeses">3</b><span>meses de nosotros 💙</span><small id="diasMeses"></small></div>
+    <div class="cuenta"><b id="numMeses">3</b><span>meses de novios 💙</span><small id="diasMeses"></small></div>
+    <p class="antes">…pero antes de eso ya te quería:</p>
+    <div class="cuenta amor"><b id="numAmor">2</b><span>años llevándote en el corazón</span><small id="diasAmor"></small></div>
     <div class="collage" id="collage"></div>
     <article class="cartica">
       <p>Mi niña, hoy cumplimos tres meses y quería que este día tuviera su propio rinconcito aquí, entre las cosas que guardo para vos.</p>
-      <p>Tres meses de quererte de lejos, de contarte mi día por mensajes, de imaginarte cerquita. En el calendario parece poquito, pero para mi corazón ha sido un montón: en estos tres meses aprendí que no hace falta tenerte al lado para tenerte adentro.</p>
+      <p>Tres meses de novios, pero llevo dos años queriéndote: primero calladito, después con miedo y ahora sin pena ninguna. En el calendario parece poquito, pero para mi corazón ha sido un montón: en estos tres meses aprendí que no hace falta tenerte al lado para tenerte adentro.</p>
       <p>Gracias por aguantar la distancia conmigo, por esperar sin apuro y por quererme así, de lejitos. Yo pongo mi parte: sigo soñando con la casita, con el chiquito, con Chimuelo en la mitad de la cama y con el día en que esta fecha la celebremos tomados de la mano.</p>
       <p>Feliz mesiversario, mi amor. Que sean muchísimos más, y que alguno nos encuentre por fin en el mismo lugar.</p>
       <div class="firma">Andrés</div>
@@ -600,11 +605,17 @@ button{font-family:'Lora',serif;cursor:pointer}
   if(HOY.getDate()<INICIO.getDate())MJ--;MJ=Math.max(MJ,0);
   var DIAS=Math.max(0,Math.floor((HOY-INICIO)/864e5));
   var esHoy=HOY.getDate()===INICIO.getDate();
+  var AMOR=new Date(2024,10,7); /* desde acá la quiero, aunque ella no lo supiera */
+  var mesesAmor=(HOY.getFullYear()-AMOR.getFullYear())*12+(HOY.getMonth()-AMOR.getMonth());
+  if(HOY.getDate()<AMOR.getDate())mesesAmor--;mesesAmor=Math.max(mesesAmor,0);
+  var ANIOS=Math.floor(mesesAmor/12),DIAS_AMOR=Math.max(0,Math.floor((HOY-AMOR)/864e5));
   $('numMeses').textContent=MJ;
-  $('diasMeses').textContent='Han sido '+DIAS+' días queriéndote igual';
-  $('fechaMeses').textContent='Desde el 7 de agosto de 2026 · '+DIAS+' días';
-  $('smMeses').textContent=MJ+' meses contigo 💙';
-  $('festejoPortada').textContent=esHoy?('🎉 ¡Hoy cumplimos '+MJ+' meses, mi niña! 🎉'):(MJ+' meses juntos 💙');
+  $('diasMeses').textContent='Han sido '+DIAS+' días a tu lado';
+  $('numAmor').textContent=ANIOS;
+  $('diasAmor').textContent=DIAS_AMOR+' días de amor, y contando';
+  $('fechaMeses').textContent='Novios desde el 7 de agosto de 2026';
+  $('smMeses').textContent=MJ+' meses de novios · '+ANIOS+' años de amor';
+  $('festejoPortada').textContent=esHoy?('🎉 ¡Hoy cumplimos '+MJ+' meses, mi niña! 🎉'):(MJ+' meses de novios · '+ANIOS+' años de amor 💙');
   var collageFotos=[
     ['09-aniversario.jpg','Sueño con nuestro aniversario: rosas, Medellín de fondo y vos.','grande'],
     ['02-atardecer-pueblo.jpg','Abrazarte sin afán mientras se va el sol.',''],
