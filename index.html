@@ -163,6 +163,32 @@ button{font-family:'Lora',serif;cursor:pointer}
 /* secreto */
 .cartaFinal{background:linear-gradient(180deg,#fff8f1,#fbeee4);color:#3b2433;border-radius:18px;padding:26px 22px;line-height:1.75;font-size:17px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
 .cierre{font-family:'Great Vibes',cursive;font-size:clamp(36px,10vw,48px);color:var(--rosa);text-align:center;line-height:1.2;margin-top:26px;text-shadow:0 0 16px rgba(255,122,168,.4)}
+/* tres meses */
+.festejo{display:inline-block;margin:0 0 4px;padding:8px 16px;border-radius:30px;font-size:13.5px;letter-spacing:.6px;color:var(--oro);
+  border:1px solid rgba(232,196,122,.55);background:rgba(232,196,122,.1);animation:brillo 2.8s infinite}
+#tresmeses{background:radial-gradient(ellipse at top,#5c1f4c 0%,var(--noche2) 42%,var(--noche) 80%)}
+#tresmeses .titulo{color:#ffd0e0}
+.badgeFecha{text-align:center;color:var(--oro);font-size:13px;letter-spacing:1.4px;text-transform:uppercase;margin-top:2px}
+.cuenta{text-align:center;margin:16px 0 4px}
+.cuenta b{display:block;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(66px,19vw,88px);line-height:.9;color:var(--rosa);text-shadow:0 0 24px rgba(255,122,168,.5)}
+.cuenta span{display:block;margin-top:8px;color:var(--suave);font-style:italic;font-size:16px}
+.cuenta small{display:block;margin-top:4px;color:#bba9c6;font-size:13px;letter-spacing:.4px}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.collage figure{position:relative;overflow:hidden;border-radius:16px;border:2px solid rgba(232,196,122,.55);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.collage figure.grande{grid-column:1/3}
+.collage img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.collage figure.grande img{aspect-ratio:4/3}
+.collage figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;font-size:13px;font-style:italic;line-height:1.35;color:var(--crema);
+  background:linear-gradient(transparent,rgba(20,12,36,.92))}
+.cartica{margin-top:20px;padding:24px 20px;border-radius:18px;background:linear-gradient(180deg,#fff8f1,#fbeee4);color:#3b2433;font-size:17px;line-height:1.7;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.cartica p{margin-top:12px}
+.cartica p:first-child{margin-top:0}
+.cartica .firma{font-family:'Great Vibes',cursive;font-size:34px;color:#b03a63;text-align:right;margin-top:14px}
+.velita{width:100%;margin-top:18px;padding:18px 16px;border-radius:16px;border:1px dashed rgba(232,196,122,.6);background:rgba(255,255,255,.06);
+  color:var(--oro);font-size:17px;font-style:italic;line-height:1.5;transition:all .5s}
+.velita.soplada{border-style:solid;border-color:rgba(255,122,168,.65);background:rgba(255,122,168,.14);color:var(--crema)}
+.confeti{position:fixed;top:-40px;z-index:70;pointer-events:none;animation:caer linear forwards}
+@keyframes caer{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(112vh) rotate(var(--rot));opacity:.85}}
 </style>
 </head>
 <body>
@@ -172,6 +198,7 @@ button{font-family:'Lora',serif;cursor:pointer}
 <section class="pantalla activa" id="portada">
   <div class="marco centro">
     <div class="sobre">💌</div>
+    <p class="festejo" id="festejoPortada"></p>
     <h1 class="script">Para mi niña,<br>Camila 💙</h1>
     <p>Alguien que te ama te dejó esto…</p>
     <button class="btn" id="abrir">Abrir 💙</button>
@@ -186,6 +213,7 @@ button{font-family:'Lora',serif;cursor:pointer}
     <div class="progreso"><span id="progTxt">Has descubierto 0 ✨</span><div class="barra"><i id="progBar"></i></div></div>
     <div class="aviso-noche" data-ir="noche">🌙 ¿No podés dormir, mi niña? Tocá aquí, yo te acompaño.</div>
     <div class="grid">
+      <button class="op hoy ancho" data-ir="tresmeses"><span class="ic">🎉</span>Nuestros 3 meses<small id="smMeses">Celebremos, mi niña 💙</small></button>
       <button class="op hoy ancho" data-ir="hoy"><span class="ic">💌</span>Tu mensaje de hoy<small>Cada día uno distinto, solo para vos</small></button>
       <button class="op noche ancho" data-ir="noche"><span class="ic">🌙</span>Abre si no puedes dormir<small>Para tus noches largas</small></button>
       <button class="op" data-ir="carta"><span class="ic">💌</span>Una carta para ti</button>
@@ -268,6 +296,26 @@ button{font-family:'Lora',serif;cursor:pointer}
     <p class="sub">Cada corazón esconde un recuerdo de lo que vamos a vivir. Tocalos todos.</p>
     <div class="corazones" id="corazones"></div>
     <img class="recFoto oculto" id="recFoto" alt="Recuerdo"><div id="recuerdoTxt">💗</div>
+  </div>
+</section>
+
+<!-- 3 MESES -->
+<section class="pantalla" id="tresmeses">
+  <div class="marco">
+    <button class="volver" data-ir="menu">← Volver al menú</button>
+    <h2 class="titulo script">Nuestros 3 meses</h2>
+    <p class="badgeFecha" id="fechaMeses"></p>
+    <div class="cuenta"><b id="numMeses">3</b><span>meses de nosotros 💙</span><small id="diasMeses"></small></div>
+    <div class="collage" id="collage"></div>
+    <article class="cartica">
+      <p>Mi niña, hoy cumplimos tres meses y quería que este día tuviera su propio rinconcito aquí, entre las cosas que guardo para vos.</p>
+      <p>Tres meses de quererte de lejos, de contarte mi día por mensajes, de imaginarte cerquita. En el calendario parece poquito, pero para mi corazón ha sido un montón: en estos tres meses aprendí que no hace falta tenerte al lado para tenerte adentro.</p>
+      <p>Gracias por aguantar la distancia conmigo, por esperar sin apuro y por quererme así, de lejitos. Yo pongo mi parte: sigo soñando con la casita, con el chiquito, con Chimuelo en la mitad de la cama y con el día en que esta fecha la celebremos tomados de la mano.</p>
+      <p>Feliz mesiversario, mi amor. Que sean muchísimos más, y que alguno nos encuentre por fin en el mismo lugar.</p>
+      <div class="firma">Andrés</div>
+    </article>
+    <button class="velita" id="velita">🎂 Tocá aquí para soplar la velita</button>
+    <div class="fila" style="margin-top:16px"><button class="btn rosa" data-ir="cancion">Nuestra canción 🎵</button><button class="volver" data-ir="menu">Menú</button></div>
   </div>
 </section>
 
@@ -383,9 +431,9 @@ button{font-family:'Lora',serif;cursor:pointer}
   /* navegación */
   var actual='portada';
   function ir(id){if(!$(id))return;$(actual).classList.remove('activa');$(id).classList.add('activa');$(id).scrollTop=0;actual=id;
-    if(SECC.indexOf(id)>=0&&!vistos[id]){vistos[id]=1;guardar();}actualizar();if(id==='sueno')mostrarFoto();if(id==='noche'&&!$('msjNoche').textContent)otroNoche();if(id==='sobres')cerrarSobre();if(id==='preguntas'&&!$('pregTxt').textContent)mostrarPreg();}
+    if(SECC.indexOf(id)>=0&&!vistos[id]){vistos[id]=1;guardar();}actualizar();if(id==='sueno')mostrarFoto();if(id==='noche'&&!$('msjNoche').textContent)otroNoche();if(id==='sobres')cerrarSobre();if(id==='preguntas'&&!$('pregTxt').textContent)mostrarPreg();if(id==='tresmeses')confeti(26);}
   document.addEventListener('click',function(ev){var t=ev.target.closest('[data-ir]');if(t){ir(t.getAttribute('data-ir'));}});
-  $('abrir').addEventListener('click',function(){ir('menu');lluvia(innerWidth/2,innerHeight/2,18);});
+  $('abrir').addEventListener('click',function(){ir('menu');lluvia(innerWidth/2,innerHeight/2,18);if(esHoy)confeti(20);});
 
   function lluvia(x,y,n){var em=['😘','💋','💙','💗','💖','❤'];for(var i=0;i<n;i++){var s=document.createElement('span');s.className='vuela';s.textContent=em[Math.random()*em.length|0];
     s.style.left=x+'px';s.style.top=y+'px';var a=Math.random()*Math.PI*2,r=90+Math.random()*170;s.style.setProperty('--x',Math.cos(a)*r+'px');
@@ -544,6 +592,40 @@ button{font-family:'Lora',serif;cursor:pointer}
       r.classList.remove('oculto');$('pregSig').classList.remove('oculto');posP++;ls('camila_preg_pos',posP);var rr=b.getBoundingClientRect();lluvia(rr.left+rr.width/2,rr.top,10);
       setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'center'})},200);});o.appendChild(b);});}
   $('pregSig').addEventListener('click',function(){mostrarPreg();$('preguntas').scrollTop=0;});
+
+  /* ===== celebración: nuestros 3 meses ===== */
+  var INICIO=new Date(2026,7,7); /* 7 de agosto de 2026: el día que empezamos */
+  var HOY=new Date();
+  var MJ=(HOY.getFullYear()-INICIO.getFullYear())*12+(HOY.getMonth()-INICIO.getMonth());
+  if(HOY.getDate()<INICIO.getDate())MJ--;MJ=Math.max(MJ,0);
+  var DIAS=Math.max(0,Math.floor((HOY-INICIO)/864e5));
+  var esHoy=HOY.getDate()===INICIO.getDate();
+  $('numMeses').textContent=MJ;
+  $('diasMeses').textContent='Han sido '+DIAS+' días queriéndote igual';
+  $('fechaMeses').textContent='Desde el 7 de agosto de 2026 · '+DIAS+' días';
+  $('smMeses').textContent=MJ+' meses contigo 💙';
+  $('festejoPortada').textContent=esHoy?('🎉 ¡Hoy cumplimos '+MJ+' meses, mi niña! 🎉'):(MJ+' meses juntos 💙');
+  var collageFotos=[
+    ['09-aniversario.jpg','Sueño con nuestro aniversario: rosas, Medellín de fondo y vos.','grande'],
+    ['02-atardecer-pueblo.jpg','Abrazarte sin afán mientras se va el sol.',''],
+    ['07-bailando.jpg','Bailando en la sala, pisándonos y riéndonos.',''],
+    ['05-playa.jpg','De la mano hasta donde se acabe el mar.',''],
+    ['06-beso-frente.jpg','Un beso en la frente, para que sepás que te cuido.','']];
+  var col=$('collage');
+  collageFotos.forEach(function(f){var fig=document.createElement('figure');if(f[2])fig.className=f[2];
+    fig.innerHTML='<img src="fotos/'+f[0]+'" alt="'+f[1]+'" loading="lazy"><figcaption>'+f[1]+'</figcaption>';col.appendChild(fig);});
+  function confeti(n){var em=['🎉','🎊','💙','💗','💖','✨','🥳'];
+    for(var i=0;i<n;i++){(function(){var s=document.createElement('span');s.className='confeti';s.textContent=em[Math.random()*em.length|0];
+      s.style.left=Math.random()*100+'vw';s.style.fontSize=(14+Math.random()*16)+'px';s.style.animationDuration=(2.4+Math.random()*2.2)+'s';
+      s.style.animationDelay=(Math.random()*.6)+'s';s.style.setProperty('--rot',(Math.random()*720-360)+'deg');
+      document.body.appendChild(s);setTimeout(function(){s.remove()},5600);})();}}
+  var velitas=['¡Felicidades, mi niña! Que sean muchísimos meses más.','Pedí un deseo… y ya se cumplió: vos.','Soplé la velita por los dos: pedí que nos alcance la vida.',
+    'Tres meses y cada día te quiero un poquito más.','Ojalá la siguiente vela la soplemos juntos, en la misma mesa.'];
+  var uV=-1;
+  $('velita').addEventListener('click',function(){var b=this,r=b.getBoundingClientRect();
+    lluvia(r.left+r.width/2,r.top+r.height/2,20);confeti(30);if(navigator.vibrate)navigator.vibrate([40,60,40]);
+    uV=azar(velitas,uV);b.classList.add('soplada');b.style.opacity=0;
+    setTimeout(function(){b.textContent='“'+velitas[uV]+'”';b.style.opacity=1;},300);});
 
   /* acceso directo por #seccion (para vista previa) */
   if(location.hash.length>1&&$(location.hash.slice(1)))ir(location.hash.slice(1));
